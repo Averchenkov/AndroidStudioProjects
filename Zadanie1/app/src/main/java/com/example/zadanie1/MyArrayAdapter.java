@@ -1,6 +1,8 @@
 package com.example.zadanie1;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class MyArrayAdapter extends ArrayAdapter<String> {
     private final Activity context;
@@ -20,20 +24,17 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
         this.names = names;
     }
 
-    // Класс для сохранения во внешний класс и для ограничения доступа
-    // из потомков класса
     static class ViewHolder {
         public ImageView imageView;
         public TextView textView;
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // ViewHolder буферизирует оценку различных полей шаблона элемента
 
         ViewHolder holder;
-        // Очищает сущетсвующий шаблон, если параметр задан
-        // Работает только если базовый шаблон для всех классов один и тот же
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
@@ -46,11 +47,9 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             holder = (ViewHolder) rowView.getTag();
         }
 
-        holder.textView.setText(names[position]);
-
-        //String s = names[position];
-
-        holder.imageView.setImageResource(R.drawable.ok);
+        holder.textView.setText(Wordify.inwords(position + 1));
+        Random random = new Random();
+        holder.imageView.setImageResource(getImageId(context, "m" + String.valueOf(random.nextInt(90) + 1)));
         if (position % 2 == 1){
             rowView.setBackgroundColor(Color.parseColor("#CCCCCC"));
         }
@@ -60,5 +59,8 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
 
 
         return rowView;
+    }
+    public static int getImageId(Context context, String imageName) {
+        return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
 }

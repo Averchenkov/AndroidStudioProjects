@@ -17,7 +17,7 @@ public class List extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.rowlayout);
-        createList();
+        setListAdapter(new MyArrayAdapter(this, number));
     }
 
     String IntToString(int value, String str) {
@@ -157,22 +157,12 @@ public class List extends ListActivity {
         }
 
         else if (value == 1000000){
-            return "один мсллион";
+            return "один миллион";
         }
 
 
         else return "ERROR";
 
-
-    }
-
-    public void createList(){
-        //list = (ListView)findViewById(R.id.List);
-        for (int i = 1; i <= COUNT; i++) {
-            number[i-1] = IntToString(i,"");
-        }
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, number);
-        setListAdapter(new MyArrayAdapter(this, number));
 
     }
 }

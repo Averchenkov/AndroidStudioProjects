@@ -17,6 +17,8 @@ public class Splash_screen extends AppCompatActivity {
         startList();
     }
 
+
+
     public void startList(){
 //        try {
 //            Thread.sleep(2000);
@@ -26,16 +28,31 @@ public class Splash_screen extends AppCompatActivity {
 //        startActivity(new Intent(".List"));
 
 
-        new Handler().postDelayed(new Runnable() {
+        Thread thread = new Thread(){
             @Override
             public void run() {
-                Intent launchNextActivity;
-                launchNextActivity = new Intent(".List");
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(launchNextActivity);
+                try {
+                    sleep(2000);
+                    startActivity(new Intent(".List"));
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }, 2000);
+        };
+        thread.start();
+
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent launchNextActivity;
+//                launchNextActivity = new Intent(".List");
+//                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(launchNextActivity);
+//            }
+//        }, 2000);
     }
 }
