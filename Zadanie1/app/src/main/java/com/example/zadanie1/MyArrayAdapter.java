@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +31,6 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
     @SuppressLint("ResourceType")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // ViewHolder буферизирует оценку различных полей шаблона элемента
-
         ViewHolder holder;
         View rowView = convertView;
         if (rowView == null) {
