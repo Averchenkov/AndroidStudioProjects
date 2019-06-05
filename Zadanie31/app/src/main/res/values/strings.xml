@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Zadanie3.1</string>
+    <string-array name="names">
+        <item>Никита</item>
+        <item>Илья</item>
+        <item>Федор</item>
+        <item>Иван</item>
+        <item>Алексей</item>
+        <item>Денис</item>
+    </string-array>
+    <string-array name="surnames">
+        <item>Аверченков</item>
+        <item>Тимофеев</item>
+        <item>Антонов</item>
+        <item>Меньков</item>
+        <item>Вихирев</item>
+        <item>Ягупа</item>
+    </string-array>
+    <string-array name="patronymic">
+        <item>Эдуардович</item>
+        <item>Сергеевич</item>
+        <item>Владиславович</item>
+        <item>Александрович</item>
+        <item>Игоревич</item>
+        <item>Андреевич</item>
+    </string-array>
+</resources>
